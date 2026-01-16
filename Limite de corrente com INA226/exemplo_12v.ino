@@ -2,7 +2,7 @@
 #include <Wire.h>
 #include <Adafruit_SSD1306.h>
 
-#define Imax 0.5 //500mA
+#define Imax 0.5 //500mA corrente máxima
 
 #define rst_12v   PA6//Desliga a fonte 12V quando recebe nível alto
 #define set_12v   PA7//Liga a fonte 12V quando recebe nível alto
@@ -45,7 +45,7 @@ void setup()
     Serial.println("\n***** Erro de configuração INA226 1");
 
 
-  configurarAlertaSOL(_INA226_12V, Imax * 0.03333);
+  configurarAlertaSOL(_INA226_12V, Imax * 0.03333); //Define a tensão máxima no resistor shunt e, consequentemente, a corrente máxima.
 
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   display.clearDisplay();
@@ -117,3 +117,4 @@ void configurarAlertaSOL(uint8_t ina_address, float vshunt_limite_volts) {
   Wire.write(lowByte(alertLimitRaw));    // LSB
   Wire.endTransmission();
 }
+
