@@ -211,8 +211,6 @@ void setup() {
 
   conectarWiFi();
 
-  pinMode(3,OUTPUT);
-
 
   // Verifica uma vez no boot
   tarefaVerificacaoOTA();
@@ -222,10 +220,6 @@ unsigned long ultimaChecagem = 0;
 
 void loop() {
   // ... seu código normal aqui ...
-  digitalWrite(3,LOW);
-  delay(500);
-  digitalWrite(3,HIGH);
-  delay(500);
 
   if (millis() - ultimaChecagem > CHECK_INTERVAL) {
     ultimaChecagem = millis();
